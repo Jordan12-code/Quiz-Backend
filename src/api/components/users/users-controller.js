@@ -148,6 +148,7 @@ async function updateUser(request, response, next) {
 async function changePassword(request, response, next) {
   // TODO: Implement this function
   // const id = request.params.id;
+
   // const {
   //   old_password: oldPassword,
   //   new_password: newPassword,
@@ -160,7 +161,7 @@ async function changePassword(request, response, next) {
   // - the new password is at least 8 characters long
   // - the new password is different from the old password
   // - the new password and confirm new password match
-  //
+
   // Note that the password is hashed in the database, so you need to
   // compare the hashed password with the old password. Use the passwordMatched
   // function from src/utils/password.js to compare the old password with the

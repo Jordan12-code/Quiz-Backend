@@ -2,6 +2,20 @@ const { env, port } = require('./core/config');
 const logger = require('./core/logger')('app');
 const server = require('./core/server');
 
+const mongoose = require('mongoose');
+require('dotenv').config();
+
+const DB_URI = `${process.env.DB_CONNECTION}/${process.env.DB_NAME}`;
+
+mongoose
+  .connect(DB_URI)
+  .then(() => {
+    console.log('Connected to MongoDB ✅');
+  })
+  .catch((err) => {
+    console.error('MongoDB connection error ❌:', err);
+  });
+
 const app = server.listen(port, (err) => {
   if (err) {
     logger.fatal(err, 'Failed to start the server.');
