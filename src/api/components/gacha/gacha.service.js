@@ -43,21 +43,21 @@ const getHistory = async (userId) => {
 const getPrizeList = async () => {
   const prizes = await repo.getAllPrizes();
   return prizes.map((p) => ({
+    id: p._id,
     name: p.name,
     quota: p.quota,
     remainingSlots: p.quota - p.winners,
   }));
 };
 
-const maskName = (name) => {
-  return name
+const maskName = (name) =>
+  name
     .split(' ')
     .map((word) => {
       if (word.length <= 1) return word;
       return word[0] + '*'.repeat(word.length - 2) + word[word.length - 1];
     })
     .join(' ');
-};
 
 const getWinnersByPrize = async (prizeId) => {
   const winners = await repo.getWinnersByPrize(prizeId);
